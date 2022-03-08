@@ -54,6 +54,10 @@ public class ContactController {
    // }
 
 
+    @GetMapping("/contacts/{id}")
+    public Contact getSingleContact(@PathVariable Long id) {
+        return contactService.findById(id).get();
+    }
 
     @PutMapping("/contact")
     public Contact updateContact(@RequestBody Contact contact) {

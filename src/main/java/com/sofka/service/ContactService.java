@@ -65,4 +65,8 @@ public class ContactService implements IContactService{
     public Optional<Contact> findUser(Contact contact) {
         return contactDao.findById(contact.getId());
     }
+
+    public Contact findById(Long id) {
+        return findById(id);
+    };
 }
