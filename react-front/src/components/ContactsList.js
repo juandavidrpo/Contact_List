@@ -5,10 +5,6 @@ import contactService from '../service/contactService';
 const ContactsList = () => {
     const [contacts, setContacts] = useState([]);
 
-    useEffect(() => {
-        init();
-    }, []);
-
     const init = () => {
         contactService
             .getAll()
@@ -20,6 +16,10 @@ const ContactsList = () => {
                 console.log('error:', error);
             });
     };
+
+    useEffect(() => {
+        init();
+    }, []);
 
     const handleDelete = (id) => {
         contactService
@@ -34,18 +34,22 @@ const ContactsList = () => {
     };
 
     return (
-        <div>
+        <div className="container">
             <h3>Lista de contactos</h3>
             <div>
-                <Link to="/add">Agregar contacto</Link>
-                <table border="1" cellPadding="10">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Telefono</th>
-                        <th>Correo</th>
-                        <th>Fecha de cumpelaños</th>
-                        <th>Acciones</th>
-                    </tr>
+                <Link to="/add" className="btn btn-primary mb-2">
+                    Agregar contacto
+                </Link>
+                <table className="table table-bordered table-striped">
+                    <thead className="thead-dark">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Telefono</th>
+                            <th>Correo</th>
+                            <th>Fecha de cumpleaños</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
                     {contacts.map((contact) => (
                         <tr key={contact.id}>
                             <td>{contact.name}</td>
@@ -53,10 +57,14 @@ const ContactsList = () => {
                             <td>{contact.email}</td>
                             <td>{contact.dateBirth}</td>
                             <td>
-                                <Link to={`/contact/edit/${contact.id}`}>
+                                <Link
+                                    className="btn btn-info"
+                                    to={`/contact/edit/${contact.id}`}
+                                >
                                     Actualizar
                                 </Link>
                                 <button
+                                    className="btn btn-danger"
                                     onClick={(e) => {
                                         handleDelete(contact.id);
                                     }}

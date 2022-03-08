@@ -54,47 +54,68 @@ const AddContact = () => {
                     console.log('hubo un error', error);
                 });
         }
-    }, []);
+    });
 
     return (
-        <div>
+        <div className="container">
             <h3>Agregado nuevo contacto</h3>
             <form>
-                <div>
+                <div className="form-group">
                     <input
                         type="text"
+                        className="form-control col-4"
                         id="name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Nombre"
+                        required
                     />
+                </div>
 
+                <div className="form-group">
                     <input
                         type="text"
+                        className="form-control col-4"
                         id="phone"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="Número de telefono"
+                        required
                     />
+                </div>
 
+                <div className="form-group">
                     <input
                         type="email"
+                        className="form-control col-4"
                         id="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Email"
+                        required
                     />
+                </div>
 
+                <div className="form-group">
                     <input
                         type="date"
+                        className="form-control col-4"
                         id="dateBirth"
                         value={dateBirth}
                         onChange={(e) => setDateBirth(e.target.value)}
                         placeholder="Cumpleaños"
+                        required
                     />
                 </div>
+
                 <div>
-                    <button onClick={(e) => saveContact(e)}>Guardar</button>
+                    <button
+                        type="submit"
+                        className="btn btn-primary"
+                        onClick={(e) => saveContact(e)}
+                    >
+                        Guardar
+                    </button>
                 </div>
             </form>
             <Link to="/">Atras</Link>
