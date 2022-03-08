@@ -43,7 +43,7 @@ const AddContact = () => {
     useEffect(() => {
         if (id) {
             contactService
-                .getAll(id)
+                .get(id)
                 .then((contact) => {
                     setName(contact.data.name);
                     setPhone(contact.data.phone);
@@ -54,7 +54,7 @@ const AddContact = () => {
                     console.log('hubo un error', error);
                 });
         }
-    });
+    }, []);
 
     return (
         <div className="container">
