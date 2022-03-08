@@ -6,12 +6,21 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
 @Slf4j
 @RestController
+@CrossOrigin("*")
 public class ContactController {
 
     @Autowired
@@ -24,7 +33,7 @@ public class ContactController {
     }
 
     @PostMapping(path = "/contact")
-    public ResponseEntity<Contact> create(Contact contact) {
+    public ResponseEntity<Contact> create(@RequestBody Contact contact) {
         log.info("Contacto a crear: {}", contact);
         contactService.save(contact);
         return new ResponseEntity<>(contact, HttpStatus.CREATED);
@@ -37,11 +46,18 @@ public class ContactController {
         return new ResponseEntity<>(contact, HttpStatus.OK);
     }
 
-    @PutMapping(path = "/contact/{id}")
-    public ResponseEntity<Contact> update(Contact contact, @PathVariable("id") Long id) {
-        log.info("Contacto a modificar: {}", contact);
-        contactService.update(id, contact);
-        return new ResponseEntity<>(contact, HttpStatus.OK);
+   // @PutMapping(path = "/contact/{id}")
+   // public ResponseEntity<Contact> update(@RequestBody Contact contact, @PathVariable("id") Long id) {
+   //     log.info("Contacto a modificar: {}", contact);
+    //    contactService.update(id, contact);
+      //  return new ResponseEntity<>(contact, HttpStatus.OK);
+   // }
+
+
+
+    @PutMapping("/contact")
+    public Contact updateContact(@RequestBody Contact contact) {
+        return contactService.save(contact);
     }
 
     @PatchMapping(path = "/contact/name/{id}")

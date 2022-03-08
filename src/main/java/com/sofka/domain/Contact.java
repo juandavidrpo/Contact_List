@@ -2,8 +2,12 @@ package com.sofka.domain;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Column;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -29,6 +33,6 @@ public class Contact implements Serializable {
     private String email;
 
     @Column(name = "date_birth")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dateBirth;
 }
