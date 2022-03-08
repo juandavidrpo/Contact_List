@@ -1,5 +1,12 @@
 package com.sofka.domain;
 
+/**
+ * Representa la clase de contacto
+ * @version 1.0.0 2002-03-08
+ * @author Juan David Rojas Restrepo
+ * @since 1.0.0
+ */
+
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Entity;

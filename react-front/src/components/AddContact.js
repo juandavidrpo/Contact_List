@@ -2,6 +2,12 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import contactService from '../service/contactService';
 
+/**
+ * Representa la función para agregar datos de contacto.
+ * @version 1.0.0 2002-03-08
+ * @author Juan David Rojas Restrepo
+ * @since 1.0.0
+ */
 const AddContact = () => {
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
@@ -10,6 +16,9 @@ const AddContact = () => {
     const navigate = useNavigate();
     const { id } = useParams();
 
+    /**
+     * Representa la función para guardar los contactos.
+     */
     const saveContact = (e) => {
         e.preventDefault();
 
@@ -22,7 +31,7 @@ const AddContact = () => {
                     navigate('/');
                 })
                 .catch((error) => {
-                    console.log('hubo un error', error);
+                    console.log('Hubo un problema al actualizar', error);
                 });
         } else {
             contactService
@@ -35,7 +44,7 @@ const AddContact = () => {
                     navigate('/');
                 })
                 .catch((error) => {
-                    console.log('hay un error', error);
+                    console.log('Hubo un problema al agregar', error);
                 });
         }
     };
@@ -51,7 +60,7 @@ const AddContact = () => {
                     setDateBirth(contact.data.dateBirth);
                 })
                 .catch((error) => {
-                    console.log('hubo un error', error);
+                    console.log('Hubo un error', error);
                 });
         }
     }, []);
@@ -68,7 +77,6 @@ const AddContact = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Nombre"
-                        required
                     />
                 </div>
 
@@ -80,7 +88,6 @@ const AddContact = () => {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="Número de telefono"
-                        required
                     />
                 </div>
 
@@ -92,7 +99,6 @@ const AddContact = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Email"
-                        required
                     />
                 </div>
 
@@ -104,7 +110,6 @@ const AddContact = () => {
                         value={dateBirth}
                         onChange={(e) => setDateBirth(e.target.value)}
                         placeholder="Cumpleaños"
-                        required
                     />
                 </div>
 

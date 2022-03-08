@@ -2,6 +2,13 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import contactService from '../service/contactService';
 
+/**
+ * Representa la función para mostrar los contactos.
+ * @version 1.0.0 2002-03-08
+ * @author Juan David Rojas Restrepo
+ * @since 1.0.0
+ * @returns la información de los contactos.
+ */
 const ContactsList = () => {
     const [contacts, setContacts] = useState([]);
 
@@ -9,7 +16,7 @@ const ContactsList = () => {
         contactService
             .getAll()
             .then((response) => {
-                console.log('imprimiendo data', response.data);
+                console.log('imprimiendo datos', response.data);
                 setContacts(response.data);
             })
             .catch((error) => {
@@ -21,6 +28,9 @@ const ContactsList = () => {
         init();
     }, []);
 
+    /**
+     * Representa la función para borrar contacto.
+     */
     const handleDelete = (id) => {
         contactService
             .remove(id)
@@ -44,7 +54,7 @@ const ContactsList = () => {
                     <thead className="thead-dark">
                         <tr>
                             <th>Nombre</th>
-                            <th>Telefono</th>
+                            <th>Teléfono</th>
                             <th>Correo</th>
                             <th>Fecha de cumpleaños</th>
                             <th>Acciones</th>

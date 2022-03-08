@@ -1,5 +1,11 @@
 import httpClient from '../httpCommon';
 
+/**
+ * Representa las funciones para el consumo de los servicios.
+ * @version 1.0.0 2002-03-08
+ * @author Juan David Rojas Restrepo
+ * @since 1.0.0
+ */
 const getAll = () => {
     return httpClient.get('/contacts');
 };
