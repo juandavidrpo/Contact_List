@@ -67,7 +67,7 @@ const AddContact = () => {
 
     return (
         <div className="container">
-            <h3>Agregado nuevo contacto</h3>
+            <h3>Datos de contacto</h3>
             <form>
                 <div className="form-group">
                     <input

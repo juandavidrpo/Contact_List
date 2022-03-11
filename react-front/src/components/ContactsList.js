@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import contactService from '../service/contactService';
 
+import Moment from 'moment';
+
 /**
  * Representa la función para mostrar los contactos.
  * @version 1.0.0 2002-03-08
@@ -65,7 +67,11 @@ const ContactsList = () => {
                             <td>{contact.name}</td>
                             <td>{contact.phone}</td>
                             <td>{contact.email}</td>
-                            <td>{contact.dateBirth}</td>
+                            <td>
+                                {Moment(contact.dateBirth)
+                                    .utc()
+                                    .format('YYYY-MM-DD')}
+                            </td>
                             <td>
                                 <Link
                                     className="btn btn-info"
